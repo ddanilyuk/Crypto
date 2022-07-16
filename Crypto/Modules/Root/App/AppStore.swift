@@ -19,8 +19,10 @@ struct App {
         mutating func set(_ currentState: CurrentState) {
             switch currentState {
             case .onboarding:
+                self.main = nil
                 self.onboarding = Onboarding.State()
             case .main:
+                self.onboarding = nil
                 self.main = Main.State()
             }
         }
@@ -74,6 +76,10 @@ struct App {
             case false:
                 state.set(.onboarding)
             }
+            return .none
+
+        case .onboarding(.delegate(.onboardingPassed)):
+            state.set(.main)
             return .none
 
         case .appDelegate:

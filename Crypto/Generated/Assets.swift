@@ -38,6 +38,12 @@ internal enum Asset {
       internal static let step2 = ImageAsset(name: "Onboarding/step2")
       internal static let step3 = ImageAsset(name: "Onboarding/step3")
     }
+    internal enum TabBar {
+      internal static let marketSelected = ImageAsset(name: "TabBar/marketSelected")
+      internal static let marketUnselected = ImageAsset(name: "TabBar/marketUnselected")
+      internal static let profileSelected = ImageAsset(name: "TabBar/profileSelected")
+      internal static let profileUnselected = ImageAsset(name: "TabBar/profileUnselected")
+    }
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

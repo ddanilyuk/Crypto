@@ -74,7 +74,7 @@ struct Onboarding {
 
     // MARK: - Reducer
 
-    static let reducer = Reducer<State, Action, Environment> { state, action, _ in
+    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
         case .nextStep:
             guard let currentIndex = state.steps.firstIndex(of: state.selectedStep) else {
@@ -84,6 +84,7 @@ struct Onboarding {
                 state.selectedStep = nextStep
                 return .none
             } else {
+                environment.userDefaultsService.set(true, for: .onboardingPassed)
                 return Effect(value: .delegate(.onboardingPassed))
             }
 
