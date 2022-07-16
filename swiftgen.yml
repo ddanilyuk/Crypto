@@ -1,0 +1,7 @@
+xcassets:
+  inputs:
+    - Crypto/Resources/Images.xcassets
+    - Crypto/Resources/Colors.xcassets
+  outputs:
+    - templateName: swift5
+      output: Crypto/Generated/Assets.swift
