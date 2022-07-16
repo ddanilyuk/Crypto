@@ -8,12 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		5F71266B28836216008CA35E /* CryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71266A28836216008CA35E /* CryptoApp.swift */; };
-		5F71266D28836216008CA35E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71266C28836216008CA35E /* ContentView.swift */; };
 		5F71266F28836218008CA35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F71266E28836218008CA35E /* Assets.xcassets */; };
 		5F71267228836218008CA35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F71267128836218008CA35E /* Preview Assets.xcassets */; };
 		5F71267C28836219008CA35E /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71267B28836219008CA35E /* CryptoTests.swift */; };
 		5F71268628836219008CA35E /* CryptoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71268528836219008CA35E /* CryptoUITests.swift */; };
 		5F71268828836219008CA35E /* CryptoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71268728836219008CA35E /* CryptoUITestsLaunchTests.swift */; };
+		5F7126962883643C008CA35E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7126952883643C008CA35E /* ComposableArchitecture */; };
+		5F71269D2883647E008CA35E /* Publisher+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71269C2883647E008CA35E /* Publisher+Ext.swift */; };
+		5F7126A02883649D008CA35E /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71269F2883649D008CA35E /* UserDefaultsService.swift */; };
+		5F7126AA288364F2008CA35E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126A9288364F2008CA35E /* AppStore.swift */; };
+		5F7126AC288364F7008CA35E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126AB288364F7008CA35E /* AppView.swift */; };
+		5F7126AE288364FD008CA35E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126AD288364FD008CA35E /* AppDelegate.swift */; };
+		5F7126B028836508008CA35E /* AppDelegateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126AF28836508008CA35E /* AppDelegateStore.swift */; };
+		5F7126B228836515008CA35E /* OnboardingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126B128836515008CA35E /* OnboardingStore.swift */; };
+		5F7126B42883651D008CA35E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126B32883651D008CA35E /* OnboardingView.swift */; };
+		5F7126B72883652E008CA35E /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126B62883652E008CA35E /* ProfileStore.swift */; };
+		5F7126B928836534008CA35E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126B828836534008CA35E /* ProfileView.swift */; };
+		5F7126BB2883653A008CA35E /* MarketStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126BA2883653A008CA35E /* MarketStore.swift */; };
+		5F7126BD28836542008CA35E /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126BC28836542008CA35E /* MarketView.swift */; };
+		5F7126BF2883654D008CA35E /* CurrencyDetailsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126BE2883654D008CA35E /* CurrencyDetailsStore.swift */; };
+		5F7126C128836557008CA35E /* CurrencyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126C028836557008CA35E /* CurrencyDetailsView.swift */; };
+		5F7126C4288365F7008CA35E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126C3288365F7008CA35E /* MainView.swift */; };
+		5F7126C6288365FC008CA35E /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126C5288365FC008CA35E /* MainStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +52,6 @@
 /* Begin PBXFileReference section */
 		5F71266728836216008CA35E /* Crypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F71266A28836216008CA35E /* CryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoApp.swift; sourceTree = "<group>"; };
-		5F71266C28836216008CA35E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5F71266E28836218008CA35E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F71267128836218008CA35E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F71267728836219008CA35E /* CryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +59,22 @@
 		5F71268128836219008CA35E /* CryptoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F71268528836219008CA35E /* CryptoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUITests.swift; sourceTree = "<group>"; };
 		5F71268728836219008CA35E /* CryptoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5F71269C2883647E008CA35E /* Publisher+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Ext.swift"; sourceTree = "<group>"; };
+		5F71269F2883649D008CA35E /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		5F7126A9288364F2008CA35E /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		5F7126AB288364F7008CA35E /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		5F7126AD288364FD008CA35E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5F7126AF28836508008CA35E /* AppDelegateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateStore.swift; sourceTree = "<group>"; };
+		5F7126B128836515008CA35E /* OnboardingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStore.swift; sourceTree = "<group>"; };
+		5F7126B32883651D008CA35E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5F7126B62883652E008CA35E /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		5F7126B828836534008CA35E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5F7126BA2883653A008CA35E /* MarketStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketStore.swift; sourceTree = "<group>"; };
+		5F7126BC28836542008CA35E /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
+		5F7126BE2883654D008CA35E /* CurrencyDetailsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsStore.swift; sourceTree = "<group>"; };
+		5F7126C028836557008CA35E /* CurrencyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsView.swift; sourceTree = "<group>"; };
+		5F7126C3288365F7008CA35E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5F7126C5288365FC008CA35E /* MainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7126962883643C008CA35E /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +126,11 @@
 		5F71266928836216008CA35E /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				5F71266A28836216008CA35E /* CryptoApp.swift */,
-				5F71266C28836216008CA35E /* ContentView.swift */,
+				5F7126972883644E008CA35E /* Services */,
+				5F71269828836455008CA35E /* Modules */,
+				5F7126992883645C008CA35E /* Models */,
+				5F71269A28836460008CA35E /* SharedViews */,
+				5F71269B28836468008CA35E /* Extensions */,
 				5F71266E28836218008CA35E /* Assets.xcassets */,
 				5F71267028836218008CA35E /* Preview Content */,
 			);
@@ -127,6 +162,130 @@
 			path = CryptoUITests;
 			sourceTree = "<group>";
 		};
+		5F7126972883644E008CA35E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5F71269E2883648B008CA35E /* UserDefaultsService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5F71269828836455008CA35E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126A1288364A4008CA35E /* Root */,
+				5F7126A4288364B0008CA35E /* Onboarding */,
+				5F7126C2288365DB008CA35E /* Main */,
+				5F7126A5288364C9008CA35E /* Profile */,
+				5F7126A6288364CB008CA35E /* Market */,
+				5F7126A7288364D4008CA35E /* CurrencyDetails */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5F7126992883645C008CA35E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5F71269A28836460008CA35E /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SharedViews;
+			sourceTree = "<group>";
+		};
+		5F71269B28836468008CA35E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F71269C2883647E008CA35E /* Publisher+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5F71269E2883648B008CA35E /* UserDefaultsService */ = {
+			isa = PBXGroup;
+			children = (
+				5F71269F2883649D008CA35E /* UserDefaultsService.swift */,
+			);
+			path = UserDefaultsService;
+			sourceTree = "<group>";
+		};
+		5F7126A1288364A4008CA35E /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				5F71266A28836216008CA35E /* CryptoApp.swift */,
+				5F7126A2288364A7008CA35E /* App */,
+				5F7126A3288364AA008CA35E /* AppDelegate */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		5F7126A2288364A7008CA35E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126A9288364F2008CA35E /* AppStore.swift */,
+				5F7126AB288364F7008CA35E /* AppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5F7126A3288364AA008CA35E /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126AF28836508008CA35E /* AppDelegateStore.swift */,
+				5F7126AD288364FD008CA35E /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		5F7126A4288364B0008CA35E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126B128836515008CA35E /* OnboardingStore.swift */,
+				5F7126B32883651D008CA35E /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		5F7126A5288364C9008CA35E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126B62883652E008CA35E /* ProfileStore.swift */,
+				5F7126B828836534008CA35E /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		5F7126A6288364CB008CA35E /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126BA2883653A008CA35E /* MarketStore.swift */,
+				5F7126BC28836542008CA35E /* MarketView.swift */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		5F7126A7288364D4008CA35E /* CurrencyDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126BE2883654D008CA35E /* CurrencyDetailsStore.swift */,
+				5F7126C028836557008CA35E /* CurrencyDetailsView.swift */,
+			);
+			path = CurrencyDetails;
+			sourceTree = "<group>";
+		};
+		5F7126C2288365DB008CA35E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126C5288365FC008CA35E /* MainStore.swift */,
+				5F7126C3288365F7008CA35E /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +302,9 @@
 			dependencies = (
 			);
 			name = Crypto;
+			packageProductDependencies = (
+				5F7126952883643C008CA35E /* ComposableArchitecture */,
+			);
 			productName = Crypto;
 			productReference = 5F71266728836216008CA35E /* Crypto.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +377,9 @@
 				Base,
 			);
 			mainGroup = 5F71265E28836216008CA35E;
+			packageReferences = (
+				5F7126942883643C008CA35E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 5F71266828836216008CA35E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +422,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F71266D28836216008CA35E /* ContentView.swift in Sources */,
+				5F7126C128836557008CA35E /* CurrencyDetailsView.swift in Sources */,
+				5F7126BB2883653A008CA35E /* MarketStore.swift in Sources */,
+				5F7126A02883649D008CA35E /* UserDefaultsService.swift in Sources */,
+				5F7126B72883652E008CA35E /* ProfileStore.swift in Sources */,
+				5F7126AA288364F2008CA35E /* AppStore.swift in Sources */,
+				5F7126B028836508008CA35E /* AppDelegateStore.swift in Sources */,
+				5F7126B928836534008CA35E /* ProfileView.swift in Sources */,
+				5F7126BD28836542008CA35E /* MarketView.swift in Sources */,
+				5F7126B42883651D008CA35E /* OnboardingView.swift in Sources */,
+				5F7126C4288365F7008CA35E /* MainView.swift in Sources */,
+				5F7126AC288364F7008CA35E /* AppView.swift in Sources */,
+				5F71269D2883647E008CA35E /* Publisher+Ext.swift in Sources */,
+				5F7126AE288364FD008CA35E /* AppDelegate.swift in Sources */,
+				5F7126BF2883654D008CA35E /* CurrencyDetailsStore.swift in Sources */,
 				5F71266B28836216008CA35E /* CryptoApp.swift in Sources */,
+				5F7126B228836515008CA35E /* OnboardingStore.swift in Sources */,
+				5F7126C6288365FC008CA35E /* MainStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +763,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F7126942883643C008CA35E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.38.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F7126952883643C008CA35E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F7126942883643C008CA35E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5F71265F28836216008CA35E /* Project object */;
 }
