@@ -33,6 +33,26 @@ internal enum Asset {
   }
   internal enum Images {
     internal static let accentColor = ColorAsset(name: "AccentColor")
+    internal enum Coins {
+      internal static let binance = ImageAsset(name: "Coins/binance")
+      internal static let bitcoin = ImageAsset(name: "Coins/bitcoin")
+      internal static let cardano = ImageAsset(name: "Coins/cardano")
+      internal static let chainLink = ImageAsset(name: "Coins/chain_link")
+      internal static let etherium = ImageAsset(name: "Coins/etherium")
+      internal static let etherium2 = ImageAsset(name: "Coins/etherium2")
+      internal static let tether = ImageAsset(name: "Coins/tether")
+    }
+    internal enum Common {
+      internal static let arrowDrop = ImageAsset(name: "Common/arrowDrop")
+      internal static let arrowDropUp24px = ImageAsset(name: "Common/arrow_drop_up_24px")
+      internal static let drop = ImageAsset(name: "Common/drop")
+      internal static let newsIcon = ImageAsset(name: "Common/newsIcon")
+      internal static let up = ImageAsset(name: "Common/up")
+    }
+    internal enum News {
+      internal static let altcoin = ImageAsset(name: "News/altcoin")
+      internal static let bitcoin = ImageAsset(name: "News/bitcoin")
+    }
     internal enum Onboarding {
       internal static let step1 = ImageAsset(name: "Onboarding/step1")
       internal static let step2 = ImageAsset(name: "Onboarding/step2")
