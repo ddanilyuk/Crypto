@@ -51,34 +51,34 @@ extension Publisher {
     }
 
 }
-//
-//extension Publisher where Output == Data, Failure == NetworkError {
-//
-//    func handleResponse<T: Decodable>(with decoder: JSONDecoder) -> AnyPublisher<T, NetworkError> {
-//        flatMap { data -> AnyPublisher<T, NetworkError> in
-//            do {
-//                let response = try decoder.decode(T.self, from: data)
-//                return Just(response)
-//                    .setFailureType(to: NetworkError.self)
-//                    .eraseToAnyPublisher()
-//            } catch {
-//                if let response = try? decoder.decode(APIError.self, from: data) {
-//                    let message = response.error.message
-//                    return Fail(
-//                        outputType: T.self,
-//                        failure: NetworkError.apiError(message: message)
-//                    )
-//                    .eraseToAnyPublisher()
-//                }
-//                let networkError = NetworkError.serializationError(message: "\(error)")
-//                return Fail(outputType: T.self, failure: networkError).eraseToAnyPublisher()
-//            }
-//        }
-//        .eraseToAnyPublisher()
-//    }
-//
-//}
-//
+
+extension Publisher where Output == Data, Failure == NetworkError {
+
+    func handleResponse<T: Decodable>(with decoder: JSONDecoder) -> AnyPublisher<T, NetworkError> {
+        flatMap { data -> AnyPublisher<T, NetworkError> in
+            do {
+                let response = try decoder.decode(T.self, from: data)
+                return Just(response)
+                    .setFailureType(to: NetworkError.self)
+                    .eraseToAnyPublisher()
+            } catch {
+                if let response = try? decoder.decode(APIError.self, from: data) {
+                    let message = response.error.message
+                    return Fail(
+                        outputType: T.self,
+                        failure: NetworkError.apiError(message: message)
+                    )
+                    .eraseToAnyPublisher()
+                }
+                let networkError = NetworkError.serializationError(message: "\(error)")
+                return Fail(outputType: T.self, failure: networkError).eraseToAnyPublisher()
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+}
+
 extension Publisher where Output == Never {
 
     func setOutputType<NewOutput>(to _: NewOutput.Type) -> AnyPublisher<NewOutput, Failure> {

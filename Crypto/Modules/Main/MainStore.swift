@@ -41,11 +41,26 @@ struct Main {
 
     // MARK: - Environment
 
-    struct Environment { }
+    struct Environment {
+        let userService: UserService
+        let currencyService: CurrencyService
+        let newsService: NewsService
+    }
 
     // MARK: - Reducer
 
-    static let reducer = Reducer<State, Action, Environment> { _, action, _ in
+    static let reducer = Reducer<State, Action, Environment>.combine(
+        Profile.reducer
+            .pullback(
+                state: \.profile,
+                action: /Action.profile,
+                environment: { $0.profile }
+            ),
+
+        coreReducer
+    )
+
+    static let coreReducer = Reducer<State, Action, Environment> { _, action, _ in
         switch action {
         case .profile:
             return .none
@@ -58,5 +73,17 @@ struct Main {
         }
     }
     .binding()
+
+}
+
+extension Main.Environment {
+
+    var profile: Profile.Environment {
+        Profile.Environment(
+            userService: userService,
+            currencyService: currencyService,
+            newsService: newsService
+        )
+    }
 
 }

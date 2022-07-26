@@ -12,6 +12,7 @@ struct CurrenciesView: View {
 
     struct ViewState: Equatable {
         let currencies: [Currency]
+        let isRedacted: Bool
     }
 
     enum ViewAction {
@@ -42,7 +43,7 @@ struct CurrenciesView: View {
             HStack(spacing: 16) {
                 // TODO: ForEachStore?
                 ForEach(viewStore.currencies) { currency in
-                    CurrencyCell(currency: currency)
+                    CurrencyCell(currency: currency, isRedacted: viewStore.isRedacted)
                         .onTapGesture {
                             viewStore.send(.openCurrencyDetails(currency))
                         }
@@ -62,7 +63,8 @@ extension Profile.State {
 
     var currenciesView: CurrenciesView.ViewState {
         CurrenciesView.ViewState(
-            currencies: trendingCurrencies
+            currencies: trendingCurrencies,
+            isRedacted: trendingCurrenciesIsRedacted
         )
     }
 

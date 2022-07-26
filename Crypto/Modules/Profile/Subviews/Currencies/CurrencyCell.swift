@@ -10,6 +10,7 @@ import SwiftUI
 struct CurrencyCell: View {
 
     let currency: Currency
+    let isRedacted: Bool
 
     var body: some View {
         VStack {
@@ -44,12 +45,19 @@ struct CurrencyCell: View {
         .frame(height: 36)
     }
 
+    @ViewBuilder
     private var chart: some View {
-        ChartView(
-            data: currency.data,
-            percentage: currency.percentage,
-            frame: CGRect(x: 0, y: 0, width: 164, height: 37)
-        )
+        if isRedacted {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.white.opacity(0.2))
+                .frame(width: 164, height: 37)
+        } else {
+            ChartView(
+                data: currency.data,
+                percentage: currency.percentage,
+                frame: CGRect(x: 0, y: 0, width: 164, height: 37)
+            )
+        }
     }
 
     private var footer: some View {

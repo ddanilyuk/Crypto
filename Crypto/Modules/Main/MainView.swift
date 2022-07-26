@@ -66,7 +66,11 @@ struct MainView_Previews: PreviewProvider {
                 store: Store(
                     initialState: Main.State(),
                     reducer: Main.reducer,
-                    environment: Main.Environment()
+                    environment: Main.Environment(
+                        userService: .mock,
+                        currencyService: .mock,
+                        newsService: .mock
+                    )
                 )
             )
         }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import Kingfisher
 
 struct ProfileHeaderView: View {
 
@@ -43,10 +44,23 @@ struct ProfileHeaderView: View {
 
             Spacer()
 
-            Image(systemName: "lock")
+            KFImage.url(viewStore.user.imageURL)
                 .resizable()
+                .diskCacheExpiration(.never)
+                .memoryCacheExpiration(.never)
+                .placeholder {
+                    ZStack {
+                        Rectangle()
+                            .fill(Color(.systemGroupedBackground))
+
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }
+                }
+                .scaledToFill()
                 .frame(width: 60, height: 60)
                 .cornerRadius(30)
+                .clipped()
         }
         .padding(16)
     }

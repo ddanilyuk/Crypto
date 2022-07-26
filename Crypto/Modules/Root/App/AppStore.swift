@@ -45,22 +45,26 @@ struct App {
 
     struct Environment {
         let userDefaultsService: UserDefaultsServiceable
-//        let networkService: NetworkService
-//        let animalsService: AnimalsService
-//        let kingfisherService: KingfisherService
+        let networkService: NetworkService
+
+        let userService: UserService
+        let currencyService: CurrencyService
+        let newsService: NewsService
 
         static var live: Self {
-//            let baseURL = URL(string: "https://drive.google.com")!
+            let baseURL = URL(string: "https://plantin.com/api")!
             let userDefaultsService: UserDefaultsServiceable = .live()
-//            let networkService: NetworkService = .live(baseURL: baseURL)
-//            let animalsService: AnimalsService = .live(networkService: networkService)
-//            let kingfisherService: KingfisherService = .live()
+            let networkService: NetworkService = .live(baseURL: baseURL)
+            let userService: UserService = .mock // .live(networkService: networkService)
+            let currencyService: CurrencyService = .mock // .live(networkService: networkService)
+            let newsService: NewsService = .mock // .live(networkService: networkService)
 
             return Self(
-                userDefaultsService: userDefaultsService
-//                networkService: networkService,
-//                animalsService: animalsService,
-//                kingfisherService: kingfisherService
+                userDefaultsService: userDefaultsService,
+                networkService: networkService,
+                userService: userService,
+                currencyService: currencyService,
+                newsService: newsService
             )
         }
     }
@@ -131,14 +135,14 @@ extension App.Environment {
     var onboarding: Onboarding.Environment {
         Onboarding.Environment(
             userDefaultsService: userDefaultsService
-//            kingfisherService: kingfisherService
         )
     }
 
     var main: Main.Environment {
         Main.Environment(
-//            userDefaultsService: userDefaultsService
-            //            kingfisherService: kingfisherService
+            userService: userService,
+            currencyService: currencyService,
+            newsService: newsService
         )
     }
 

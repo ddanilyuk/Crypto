@@ -24,14 +24,16 @@ struct Currency: Decodable, Identifiable, Equatable {
 
 }
 
+// MARK: - Trending mocks
+
 extension Currency {
 
-    static var mocks: [Currency] = [
-        mock1,
-        mock2,
+    static var trendingMocks: [Currency] = [
+        trendingMock1,
+        trendingMock2,
     ]
 
-    static var mock1 = Currency(
+    static var trendingMock1 = Currency(
         id: "etherium2",
         symbol: "ETH2",
         name: "Etherium 2",
@@ -41,7 +43,38 @@ extension Currency {
         data: .init(points: [0.0, 0.0, 1.1, 2.8, -1, -7])
     )
 
-    static var mock2 = Currency(
+    static var trendingMock2 = Currency(
+        id: "binance_coin",
+        symbol: "BNB",
+        name: "Binance Coin",
+        price: "$245",
+        percentage: 1.91,
+        image: "Coins/binance",
+        data: .init(points: [0.0, -1.2, 1.1, 4.8, -5, 7])
+    )
+
+}
+
+// MARK: - All mocks
+
+extension Currency {
+
+    static var allMocks: [Currency] = [
+        allMock1,
+        allMock2,
+    ]
+
+    static var allMock1 = Currency(
+        id: "etherium2",
+        symbol: "ETH2",
+        name: "Etherium 22222",
+        price: "$2,383.65",
+        percentage: -4.91,
+        image: "Coins/etherium2",
+        data: .init(points: [0.0, 0.0, 1.1, 2.8, -1, -7])
+    )
+
+    static var allMock2 = Currency(
         id: "binance_coin",
         symbol: "BNB",
         name: "Binance Coin",

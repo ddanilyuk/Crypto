@@ -15,7 +15,7 @@ struct ProfileView: View {
     @Environment(\.safeAreaInsets) var safeAreaInsets
 
     var body: some View {
-        WithViewStore(store) { _ in
+        WithViewStore(store) { viewStore in
             ScrollView(showsIndicators: false) {
                 VStack {
                     WithViewStore(
@@ -25,6 +25,7 @@ struct ProfileView: View {
                         ),
                         content: ProfileHeaderView.init(viewStore:)
                     )
+                    .redacted(reason: viewStore.userIsRedacted ? .placeholder : [])
 
                     WithViewStore(
                         store.scope(
@@ -33,6 +34,7 @@ struct ProfileView: View {
                         ),
                         content: CurrenciesView.init(viewStore:)
                     )
+                    .redacted(reason: viewStore.trendingCurrenciesIsRedacted ? .placeholder : [])
 
                     WithViewStore(
                         store.scope(
@@ -41,11 +43,14 @@ struct ProfileView: View {
                         ),
                         content: NewsView.init(viewStore:)
                     )
+                    .redacted(reason: viewStore.newsIsRedacted ? .placeholder : [])
                 }
             }
+            .loadable(viewStore.binding(\.$isLoading))
             .padding(.top, safeAreaInsets.top)
             .background(Asset.Colors.corbeau.swiftUIColor)
             .edgesIgnoringSafeArea(.top)
+            .onAppear { viewStore.send(.onAppear) }
         }
     }
 
@@ -61,7 +66,11 @@ struct ProfileView_Previews: PreviewProvider {
                 store: Store(
                     initialState: Profile.State(),
                     reducer: Profile.reducer,
-                    environment: Profile.Environment()
+                    environment: Profile.Environment(
+                        userService: .mock,
+                        currencyService: .mock,
+                        newsService: .mock
+                    )
                 )
             )
         }
