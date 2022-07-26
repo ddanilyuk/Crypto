@@ -30,9 +30,7 @@ struct NewsView: View {
 
     private var header: some View {
         HStack {
-            Asset.Images.Common.newsIcon.swiftUI
-
-            Text("News")
+            Text("🪙 News")
                 .font(.system(size: 20, weight: .semibold))
                 .foregroundColor(Asset.Colors.white.swiftUIColor)
 

@@ -7,83 +7,6 @@
 
 import SwiftUI
 
-struct ChartData: Decodable, Equatable {
-
-    var points: [Double]
-
-    init<N: BinaryFloatingPoint>(points: [N]) {
-        self.points = points.map { Double($0) }
-    }
-}
-
-struct Chart: View {
-
-    var data: ChartData
-    var percentage: Double
-    var frame: CGRect
-
-    var body: some View {
-        Line(
-            linePath: path.linePath,
-            lineShape: percentage > 0 ? Asset.Colors.greenMana.swiftUIColor : Asset.Colors.red.swiftUIColor
-        )
-    }
-
-    var stepWidth: CGFloat {
-        guard data.points.count >= 2 else {
-            return 0
-        }
-        return frame.size.width / CGFloat(data.points.count - 1)
-    }
-    var stepHeight: CGFloat {
-        let points = data.points
-        if let max = points.max(), let min = points.min() {
-            return frame.size.height / CGFloat(max - min)
-        } else {
-            return 0
-        }
-    }
-    var pathPoints: [CGPoint] {
-        let points = data.points
-        var result: [CGPoint] = []
-        guard
-            points.count >= 2,
-            let offset = points.min()
-        else {
-            return result
-        }
-        let firstPoints = CGPoint(
-            x: 0,
-            y: frame.height - CGFloat(points[0] - offset) * stepHeight
-        )
-        result.append(firstPoints)
-        for pointIndex in 1..<points.count {
-            let point = CGPoint(
-                x: stepWidth * CGFloat(pointIndex),
-                y: frame.height - stepHeight * CGFloat(points[pointIndex] - offset)
-            )
-            result.append(point)
-        }
-        return result
-    }
-    var path: (linePath: Path, backgroundPath: Path) {
-        let pathPoints = pathPoints
-        var linePath = Path()
-        var backgroundPath = Path()
-        backgroundPath.move(to: CGPoint(x: 0, y: frame.height))
-        linePath.move(to: pathPoints.first!)
-        pathPoints.forEach { point in
-            linePath.addLine(to: point)
-            backgroundPath.addLine(to: point)
-        }
-        backgroundPath.addLine(to: CGPoint(x: pathPoints.last!.x, y: frame.height))
-        backgroundPath.closeSubpath()
-        return (linePath: linePath, backgroundPath: backgroundPath)
-    }
-
-}
-
-
 struct CurrencyCell: View {
 
     let currency: Currency
@@ -122,12 +45,11 @@ struct CurrencyCell: View {
     }
 
     private var chart: some View {
-        Chart(
+        ChartView(
             data: currency.data,
             percentage: currency.percentage,
             frame: CGRect(x: 0, y: 0, width: 164, height: 37)
         )
-        .frame(width: 163, height: 37)
     }
 
     private var footer: some View {

@@ -43,10 +43,7 @@ internal enum Asset {
       internal static let tether = ImageAsset(name: "Coins/tether")
     }
     internal enum Common {
-      internal static let arrowDrop = ImageAsset(name: "Common/arrowDrop")
-      internal static let arrowDropUp24px = ImageAsset(name: "Common/arrow_drop_up_24px")
       internal static let drop = ImageAsset(name: "Common/drop")
-      internal static let newsIcon = ImageAsset(name: "Common/newsIcon")
       internal static let up = ImageAsset(name: "Common/up")
     }
     internal enum News {

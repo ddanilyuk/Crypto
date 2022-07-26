@@ -2,15 +2,15 @@
 //  LineView.swift
 //  Crypto
 //
-//  Created by Denys Danyliuk on 17.07.2022.
+//  Created by Denys Danyliuk on 26.07.2022.
 //
 
 import SwiftUI
 
-struct Line: View {
+struct LineView: View {
 
-    var linePath: Path
-    var lineShape: Color
+    let linePath: Path
+    let lineShape: Color
 
     @State private var showAnimation: Bool = false
 
@@ -32,7 +32,6 @@ struct Line: View {
                 style: StrokeStyle(
                     lineWidth: 3,
                     lineCap: .round,
-
                     lineJoin: .round
                 )
             )
