@@ -40,10 +40,10 @@ struct CurrenciesView: View {
     private var collection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
-                ForEach(viewStore.currencies) { coin in
-                    CurrencyCell(coin: coin)
+                ForEach(viewStore.currencies) { currency in
+                    CurrencyCell(currency: currency)
                         .onTapGesture {
-                            viewStore.send(.openCurrencyDetails(coin))
+                            viewStore.send(.openCurrencyDetails(currency))
                         }
                 }
             }
@@ -73,8 +73,8 @@ extension Profile.Action {
 
     static func currenciesView(_ viewAction: CurrenciesView.ViewAction) -> Self {
         switch viewAction {
-        case let .openCurrencyDetails(coin):
-            return .openCurrencyDetails(coin)
+        case let .openCurrencyDetails(currency):
+            return .openCurrencyDetails(currency)
         }
     }
 

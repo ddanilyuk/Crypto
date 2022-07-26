@@ -16,6 +16,8 @@ struct Currency: Decodable, Identifiable, Equatable {
     let percentage: Double
     let image: String
 
+    let data: ChartData
+
     var percentageString: String {
         String(format: "%.02f", percentage)
     }
@@ -35,7 +37,8 @@ extension Currency {
         name: "Etherium 2",
         price: "$2,383.65",
         percentage: -4.91,
-        image: "Coins/etherium2"
+        image: "Coins/etherium2",
+        data: .init(points: [0.0, 0.0, 1.1, 2.8, -1, -7])
     )
 
     static var mock2 = Currency(
@@ -43,8 +46,9 @@ extension Currency {
         symbol: "BNB",
         name: "Binance Coin",
         price: "$245",
-        percentage: -1.91,
-        image: "Coins/binance"
+        percentage: 1.91,
+        image: "Coins/binance",
+        data: .init(points: [0.0, -1.2, 1.1, 4.8, -5, 7])
     )
 
 }

@@ -47,6 +47,7 @@
 		5F7126E628841961008CA35E /* ProfileHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126E528841961008CA35E /* ProfileHeaderButton.swift */; };
 		5F7126E82884197B008CA35E /* View+gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126E72884197B008CA35E /* View+gradients.swift */; };
 		5F7126EB28841BB3008CA35E /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126EA28841BB3008CA35E /* NewsRow.swift */; };
+		5FE18C2128847CA70095E3DB /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE18C2028847CA70095E3DB /* LineView.swift */; };
 		E53F1E8D3BD382B147955B22 /* Pods_CryptoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D69B95EF89741747B25EB04 /* Pods_CryptoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		5F7126E528841961008CA35E /* ProfileHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderButton.swift; sourceTree = "<group>"; };
 		5F7126E72884197B008CA35E /* View+gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+gradients.swift"; sourceTree = "<group>"; };
 		5F7126EA28841BB3008CA35E /* NewsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRow.swift; sourceTree = "<group>"; };
+		5FE18C2028847CA70095E3DB /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		6E209F6BD5D8879E87AA952A /* Pods_Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D69B95EF89741747B25EB04 /* Pods_CryptoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FC31590C450E6AFB609C8A /* Pods-CryptoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoTests/Pods-CryptoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			children = (
 				5F7126D528837D32008CA35E /* CurrenciesView.swift */,
 				5F7126E22884191A008CA35E /* CurrencyCell.swift */,
+				5FE18C2028847CA70095E3DB /* LineView.swift */,
 			);
 			path = Currencies;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				5F7126CF28836CC5008CA35E /* SwiftGen+Ext.swift in Sources */,
 				5F7126C128836557008CA35E /* CurrencyDetailsView.swift in Sources */,
 				5F7126BB2883653A008CA35E /* MarketStore.swift in Sources */,
+				5FE18C2128847CA70095E3DB /* LineView.swift in Sources */,
 				5F7126A02883649D008CA35E /* UserDefaultsService.swift in Sources */,
 				5F7126E0288418D2008CA35E /* User.swift in Sources */,
 				5F7126D428837BFA008CA35E /* ProfileHeaderView.swift in Sources */,
