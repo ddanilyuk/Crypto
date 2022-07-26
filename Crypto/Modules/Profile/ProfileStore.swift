@@ -23,9 +23,9 @@ struct Profile {
         @BindableState var isLoading: Bool = false
 
         init() {
-            user = User.mock
-            trendingCurrencies = Currency.allMocks
-            news = Article.mocks
+            user = User.redacted
+            trendingCurrencies = Currency.redacted
+            news = Article.redacted
         }
     }
 
@@ -62,10 +62,10 @@ struct Profile {
     static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
         case .onAppear:
-            guard !isAlreadyAppeared else {
+            guard !state.isAlreadyAppeared else {
                 return .none
             }
-            isAlreadyAppeared = true
+            state.isAlreadyAppeared = true
             return .concatenate(
                 environment.userService.getMe()
                     .catchToEffect(Action.getMeResponse),

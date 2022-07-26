@@ -23,6 +23,25 @@ struct Currency: Decodable, Identifiable, Equatable {
     }
 
 }
+// MARK: - Redacted
+
+extension Currency {
+
+    static var redacted: [Currency] = [
+        redactedMock1
+    ]
+
+    static var redactedMock1 = Currency(
+        id: "",
+        symbol: "",
+        name: String(repeating: " ", count: 10),
+        price: "$2,383.65",
+        percentage: -4.91,
+        image: "",
+        data: .init(points: [0.0, 0.0, 1.1, 2.8, -1, -7])
+    )
+
+}
 
 // MARK: - Trending mocks
 

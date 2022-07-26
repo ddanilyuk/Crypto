@@ -17,6 +17,26 @@ struct Article: Decodable, Identifiable, Equatable {
 
 }
 
+// MARK: - Redacted
+
+extension Article {
+
+    static let redacted: [Article] = [
+        redacted1
+    ]
+
+    static let redacted1 = Article(
+        id: "0",
+        title: String(repeating: " ", count: 12),
+        published: String(repeating: " ", count: 9),
+        preview: String(repeating: " ", count: 28),
+        image: ""
+    )
+
+}
+
+// MARK: - Mocks
+
 extension Article {
 
     static let mocks: [Article] = [

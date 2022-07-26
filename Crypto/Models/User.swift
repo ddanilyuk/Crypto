@@ -33,6 +33,18 @@ extension User: Decodable {
 
 extension User {
 
+    static let redacted = User(
+        name: String(repeating: " ", count: 10),
+        balance: String(repeating: " ", count: 5),
+        image: "https://redacted.com"
+    )
+
+}
+
+// MARK: - Mock
+
+extension User {
+
     static let mock = User(
         name: "Denys",
         balance: "21246",
