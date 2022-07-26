@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChartData: Decodable, Equatable {
+struct ChartData: Decodable, Equatable, Hashable {
 
     var points: [Double]
 

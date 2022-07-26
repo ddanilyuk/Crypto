@@ -62,7 +62,7 @@ struct CurrencyCell: View {
 
     private var footer: some View {
         HStack {
-            Text(currency.price)
+            Text(currency.price.priceString)
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(Asset.Colors.white.swiftUIColor)
 

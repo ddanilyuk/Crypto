@@ -52,11 +52,16 @@ struct Main {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Profile.reducer
             .pullback(
-                state: \.profile,
+                state: \State.profile,
                 action: /Action.profile,
                 environment: { $0.profile }
             ),
-
+        Market.reducer
+            .pullback(
+                state: \State.market,
+                action: /Action.market,
+                environment: { $0.market }
+            ),
         coreReducer
     )
 
@@ -83,6 +88,12 @@ extension Main.Environment {
             userService: userService,
             currencyService: currencyService,
             newsService: newsService
+        )
+    }
+
+    var market: Market.Environment {
+        Market.Environment(
+            currencyService: currencyService
         )
     }
 

@@ -13,8 +13,40 @@ struct MarketView: View {
     let store: Store<Market.State, Market.Action>
 
     var body: some View {
-        WithViewStore(store) { _ in
-            Text("Market")
+        WithViewStore(store) { viewStore in
+            NavigationView {
+                List {
+                    ForEach(viewStore.currencies, id: \.self) { currency in
+                        MarketCell(currency: currency)
+                            .listRowInsets(.init(NSDirectionalEdgeInsets.zero))
+                            .onTapGesture {
+                                viewStore.send(.openDetails(currency))
+                            }
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Asset.Colors.corbeau.swiftUIColor)
+                }
+                .navigationLink(
+                    unwrapping: viewStore.binding(\.$selectedCurrencyDetails),
+                    destination: { value in
+                        CurrencyDetailsView(
+                            store: store.scope(
+                                state: { _ in value },
+                                action: Market.Action.selectedCurrencyDetails
+                            )
+                        )
+                    }
+                )
+
+                .listStyle(.plain)
+                .listRowSeparator(.hidden)
+                .background(
+                    Asset.Colors.corbeau.swiftUIColor.edgesIgnoringSafeArea(.all)
+                )
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+            }
+            .accentColor(Asset.Colors.white.swiftUIColor)
         }
     }
 
@@ -29,7 +61,9 @@ struct MarketView_Previews: PreviewProvider {
                 store: Store(
                     initialState: Market.State(),
                     reducer: Market.reducer,
-                    environment: Market.Environment()
+                    environment: Market.Environment(
+                        currencyService: .mock
+                    )
                 )
             )
         }
