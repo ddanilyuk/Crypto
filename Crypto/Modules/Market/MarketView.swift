@@ -19,6 +19,7 @@ struct MarketView: View {
                     ForEach(viewStore.currencies, id: \.self) { currency in
                         MarketCell(currency: currency)
                             .listRowInsets(.init(NSDirectionalEdgeInsets.zero))
+                            .contentShape(Rectangle())
                             .onTapGesture {
                                 viewStore.send(.openDetails(currency))
                             }

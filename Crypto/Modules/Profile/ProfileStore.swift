@@ -66,7 +66,7 @@ struct Profile {
                 return .none
             }
             state.isAlreadyAppeared = true
-            return .concatenate(
+            return .merge(
                 environment.userService.getMe()
                     .catchToEffect(Action.getMeResponse),
 
@@ -99,18 +99,23 @@ struct Profile {
             return .none
 
         case .deposit:
+            print("Deposit")
             return .none
             
         case .withdraw:
+            print("Withdraw")
             return .none
 
-        case .openCurrencyDetails:
+        case let .openCurrencyDetails(currency):
+            print("Open currency details \(currency.symbol)")
             return .none
 
-        case .openArticle:
+        case let .openArticle(article):
+            print("Open article with title:\n\(article.title)")
             return .none
 
         case .showAllNews:
+            print("ShowAllNews")
             return .none
 
         case .binding:
