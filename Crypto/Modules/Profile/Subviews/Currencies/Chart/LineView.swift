@@ -19,9 +19,6 @@ struct LineView: View {
             .onAppear {
                 showAnimation = true
             }
-            .onDisappear {
-                showAnimation = false
-            }
     }
 
     private var linePathView: some View {

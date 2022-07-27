@@ -25,7 +25,8 @@ struct ProfileView: View {
                         ),
                         content: ProfileHeaderView.init(viewStore:)
                     )
-                    .redacted(reason: viewStore.userIsRedacted ? .placeholder : [])
+                    .redacted(reason: viewStore.userIsLoading ? .placeholder : [])
+                    .loadable(viewStore.binding(\.$userIsLoading))
 
                     WithViewStore(
                         store.scope(
@@ -34,7 +35,8 @@ struct ProfileView: View {
                         ),
                         content: CurrenciesView.init(viewStore:)
                     )
-                    .redacted(reason: viewStore.trendingCurrenciesIsRedacted ? .placeholder : [])
+                    .redacted(reason: viewStore.trendingCurrenciesIsLoading ? .placeholder : [])
+                    .loadable(viewStore.binding(\.$trendingCurrenciesIsLoading))
 
                     WithViewStore(
                         store.scope(
@@ -43,10 +45,10 @@ struct ProfileView: View {
                         ),
                         content: NewsView.init(viewStore:)
                     )
-                    .redacted(reason: viewStore.newsIsRedacted ? .placeholder : [])
+                    .redacted(reason: viewStore.newsIsLoading ? .placeholder : [])
+                    .loadable(viewStore.binding(\.$newsIsLoading))
                 }
             }
-            .loadable(viewStore.binding(\.$isLoading))
             .padding(.top, safeAreaInsets.top)
             .background(Asset.Colors.corbeau.swiftUIColor)
             .edgesIgnoringSafeArea(.top)

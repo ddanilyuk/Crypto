@@ -12,14 +12,22 @@ struct Market {
     // MARK: - State
 
     struct State: Equatable {
-        var currencies: [Currency] = Currency.allMocks
+        var currencies: [Currency]
+        var isAlreadyAppeared: Bool = false
+        @BindableState var isLoading: Bool = true
         @BindableState var selectedCurrencyDetails: CurrencyDetails.State?
+
+        init() {
+            currencies = Currency.redacted
+        }
     }
 
     // MARK: - Action
 
     enum Action: Equatable, BindableAction {
-        case start
+        case onAppear
+
+        case allCurrenciesResponse(Result<[Currency], NetworkError>)
 
         case openDetails(Currency)
         case selectedCurrencyDetails(CurrencyDetails.Action)
@@ -45,9 +53,23 @@ struct Market {
         coreReducer
     )
 
-    static let coreReducer = Reducer<State, Action, Environment> { state, action, _ in
+    static let coreReducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
-        case .start:
+        case .onAppear:
+            guard !state.isAlreadyAppeared else {
+                return .none
+            }
+            state.isAlreadyAppeared = true
+            return environment.currencyService.getAllCurrencies()
+                .catchToEffect(Action.allCurrenciesResponse)
+
+        case let .allCurrenciesResponse(.success(currencies)):
+            state.isLoading = false
+            state.currencies = currencies
+            return .none
+
+        case let .allCurrenciesResponse(.failure(error)):
+            print(error)
             return .none
 
         case let .openDetails(currency):

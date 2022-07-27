@@ -11,12 +11,12 @@ struct Loader: View {
 
     var body: some View {
         ZStack {
-            Color.secondary.opacity(0.3)
+            Color.white.opacity(0.05)
 
             ProgressView("Loading...")
-                .foregroundColor(Color.blue)
+                .foregroundColor(Asset.Colors.watermelonJuice.swiftUIColor)
                 .font(.caption)
-                .tint(Color.blue)
+                .tint(Asset.Colors.watermelonJuice.swiftUIColor)
                 .controlSize(.large)
                 .scaleEffect(1.5)
                 .progressViewStyle(.circular)

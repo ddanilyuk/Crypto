@@ -38,7 +38,8 @@ struct MarketView: View {
                         )
                     }
                 )
-
+                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                .loadable(viewStore.binding(\.$isLoading))
                 .listStyle(.plain)
                 .listRowSeparator(.hidden)
                 .background(
@@ -46,6 +47,7 @@ struct MarketView: View {
                 )
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarHidden(true)
+                .onAppear { viewStore.send(.onAppear) }
             }
             .accentColor(Asset.Colors.white.swiftUIColor)
         }

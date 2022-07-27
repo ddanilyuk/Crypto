@@ -64,7 +64,7 @@ extension Profile.State {
     var currenciesView: CurrenciesView.ViewState {
         CurrenciesView.ViewState(
             currencies: trendingCurrencies,
-            isRedacted: trendingCurrenciesIsRedacted
+            isRedacted: trendingCurrenciesIsLoading
         )
     }
 

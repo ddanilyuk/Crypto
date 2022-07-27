@@ -17,10 +17,9 @@ struct Profile {
         var news: [Article]
 
         var isAlreadyAppeared: Bool = false
-        var userIsRedacted: Bool = true
-        var trendingCurrenciesIsRedacted: Bool = true
-        var newsIsRedacted: Bool = true
-        @BindableState var isLoading: Bool = false
+        @BindableState var userIsLoading: Bool = true
+        @BindableState var trendingCurrenciesIsLoading: Bool = true
+        @BindableState var newsIsLoading: Bool = true
 
         init() {
             user = User.redacted
@@ -79,17 +78,17 @@ struct Profile {
 
         case let .getMeResponse(.success(user)):
             state.user = user
-            state.userIsRedacted = false
+            state.userIsLoading = false
             return .none
 
         case let .getTrendingResponse(.success(currencies)):
             state.trendingCurrencies = currencies
-            state.trendingCurrenciesIsRedacted = false
+            state.trendingCurrenciesIsLoading = false
             return .none
 
         case let .getNewsResponse(.success(news)):
             state.news = news
-            state.newsIsRedacted = false
+            state.newsIsLoading = false
             return .none
 
         case let .getMeResponse(.failure(error)),
