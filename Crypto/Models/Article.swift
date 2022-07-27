@@ -30,7 +30,7 @@ extension Article {
         title: String(repeating: " ", count: 12),
         published: String(repeating: " ", count: 9),
         preview: String(repeating: " ", count: 28),
-        image: ""
+        image: "News/altcoin"
     )
 
 }

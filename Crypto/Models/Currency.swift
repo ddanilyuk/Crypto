@@ -62,7 +62,7 @@ extension Currency {
         name: String(repeating: " ", count: 10),
         price: 2_383.65,
         percentage: -4.91,
-        image: "",
+        image: "Coins/etherium2",
         max24: 2_400,
         min24: 2_000,
         volume: 3_400,
