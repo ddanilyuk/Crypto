@@ -14,13 +14,12 @@ struct CurrencyDetailsView: View {
 
     @Environment(\.presentationMode) private var presentationMode
 
-    private enum Field: Int, CaseIterable {
+    private enum Field: Hashable {
         case leftPair
         case rightPair
     }
 
-    @available(iOS 15.0, *)
-    @FocusState private var focusedField: Field?
+    @State private var focus: Field?
 
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -37,7 +36,7 @@ struct CurrencyDetailsView: View {
                     .modify { view in
                         if #available(iOS 15.0, *) {
                             view
-                                .focused($focusedField, equals: .leftPair)
+                                .focusMe(state: $focus, equals: .leftPair)
                         } else {
                             view
                         }
@@ -55,7 +54,7 @@ struct CurrencyDetailsView: View {
                     .modify { view in
                         if #available(iOS 15.0, *) {
                             view
-                                .focused($focusedField, equals: .leftPair)
+                                .focusMe(state: $focus, equals: .rightPair)
                         } else {
                             view
                         }
@@ -90,7 +89,7 @@ struct CurrencyDetailsView: View {
                         ToolbarItem(placement: .keyboard) {
                             HStack {
                                 Spacer()
-                                Button("Done") { focusedField = nil }
+                                Button("Done") { focus = nil }
                             }
                         }
                     }
@@ -226,18 +225,6 @@ struct CurrencyDetailsView: View {
         }
     }
 
-    var grad: some View {
-        EmptyView()
-            .overlayLinearGradient(
-                colors: [
-                    Asset.Colors.white.swiftUIColor,
-                    Asset.Colors.white.swiftUIColor.opacity(0.01)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-    }
-
     private var footer: some View {
         WithViewStore(store) { viewStore in
             VStack(spacing: 12) {
@@ -255,7 +242,7 @@ struct CurrencyDetailsView: View {
                 .padding()
                 .background(Asset.Colors.latinCharm.swiftUIColor)
                 .cornerRadius(12)
-                
+
                 HStack {
                     Text("Launch Date")
                         .font(.system(size: 16, weight: .semibold))

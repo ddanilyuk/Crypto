@@ -56,12 +56,13 @@ struct MarketView: View {
                         view
                     }
                 }
-                .background(
-                    Asset.Colors.corbeau.swiftUIColor.edgesIgnoringSafeArea(.all)
-                )
+                .background(Asset.Colors.corbeau.swiftUIColor.ignoresSafeArea())
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarHidden(true)
-                .onAppear { viewStore.send(.onAppear) }
+                .onAppear {
+                    viewStore.send(.onAppear)
+                    UITableView.appearance().backgroundColor = Asset.Colors.corbeau.color
+                }
             }
             .accentColor(Asset.Colors.white.swiftUIColor)
         }
