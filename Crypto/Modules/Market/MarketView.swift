@@ -24,7 +24,14 @@ struct MarketView: View {
                                 viewStore.send(.openDetails(currency))
                             }
                     }
-                    .listRowSeparator(.hidden)
+                    .modify { view in
+                        if #available(iOS 15.0, *) {
+                            view
+                                .listRowSeparator(.hidden)
+                        } else {
+                            view
+                        }
+                    }
                     .listRowBackground(Asset.Colors.corbeau.swiftUIColor)
                 }
                 .navigationLink(
@@ -41,13 +48,21 @@ struct MarketView: View {
                 .redacted(reason: viewStore.isLoading ? .placeholder : [])
                 .loadable(viewStore.binding(\.$isLoading))
                 .listStyle(.plain)
-                .listRowSeparator(.hidden)
-                .background(
-                    Asset.Colors.corbeau.swiftUIColor.edgesIgnoringSafeArea(.all)
-                )
+                .modify { view in
+                    if #available(iOS 15.0, *) {
+                        view
+                            .listRowSeparator(.hidden)
+                    } else {
+                        view
+                    }
+                }
+                .background(Asset.Colors.corbeau.swiftUIColor.ignoresSafeArea())
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarHidden(true)
-                .onAppear { viewStore.send(.onAppear) }
+                .onAppear {
+                    viewStore.send(.onAppear)
+                    UITableView.appearance().backgroundColor = Asset.Colors.corbeau.color
+                }
             }
             .accentColor(Asset.Colors.white.swiftUIColor)
         }

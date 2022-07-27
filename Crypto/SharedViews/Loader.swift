@@ -16,10 +16,17 @@ struct Loader: View {
             ProgressView("Loading...")
                 .foregroundColor(Asset.Colors.watermelonJuice.swiftUIColor)
                 .font(.caption)
-                .tint(Asset.Colors.watermelonJuice.swiftUIColor)
-                .controlSize(.large)
                 .scaleEffect(1.5)
                 .progressViewStyle(.circular)
+                .modify { view in
+                    if #available(iOS 15.0, *) {
+                        view
+                            .tint(Asset.Colors.watermelonJuice.swiftUIColor)
+                            .controlSize(.large)
+                    } else {
+                        view
+                    }
+                }
         }
         .edgesIgnoringSafeArea(.all)
     }

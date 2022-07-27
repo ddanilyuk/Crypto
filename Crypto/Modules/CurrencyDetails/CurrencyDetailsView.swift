@@ -14,11 +14,12 @@ struct CurrencyDetailsView: View {
 
     @Environment(\.presentationMode) private var presentationMode
 
-    private enum Field: Int, CaseIterable {
+    private enum Field: Hashable {
         case leftPair
         case rightPair
     }
-    @FocusState private var focusedField: Field?
+
+    @State private var focus: Field?
 
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -32,9 +33,16 @@ struct CurrencyDetailsView: View {
                         ),
                         name: viewStore.currency.symbol
                     )
-                        .focused($focusedField, equals: .leftPair)
-                        .padding()
-                        .keyboardType(.decimalPad)
+                    .modify { view in
+                        if #available(iOS 15.0, *) {
+                            view
+                                .focusMe(state: $focus, equals: .leftPair)
+                        } else {
+                            view
+                        }
+                    }
+                    .padding()
+                    .keyboardType(.decimalPad)
 
                     CurrencyTextField(
                         text: viewStore.binding(
@@ -43,9 +51,16 @@ struct CurrencyDetailsView: View {
                         ),
                         name: "USD"
                     )
-                        .focused($focusedField, equals: .rightPair)
-                        .padding()
-                        .keyboardType(.decimalPad)
+                    .modify { view in
+                        if #available(iOS 15.0, *) {
+                            view
+                                .focusMe(state: $focus, equals: .rightPair)
+                        } else {
+                            view
+                        }
+                    }
+                    .padding()
+                    .keyboardType(.decimalPad)
 
                     HStack(spacing: 10) {
                         CurrencyMultiLineButton(
@@ -68,11 +83,19 @@ struct CurrencyDetailsView: View {
                         .padding()
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .keyboard) {
-                    HStack {
-                        Spacer()
-                        Button("Done") { focusedField = nil }
+            .modify { view in
+                if #available(iOS 15.0, *) {
+                    view.toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            HStack {
+                                Spacer()
+                                Button("Done") { focus = nil }
+                            }
+                        }
+                    }
+                } else {
+                    view.onTapGesture {
+                        UIApplication.shared.endEditing()
                     }
                 }
             }
@@ -202,18 +225,6 @@ struct CurrencyDetailsView: View {
         }
     }
 
-    var grad: some View {
-        EmptyView()
-            .overlayLinearGradient(
-                colors: [
-                    Asset.Colors.white.swiftUIColor,
-                    Asset.Colors.white.swiftUIColor.opacity(0.01)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-    }
-
     private var footer: some View {
         WithViewStore(store) { viewStore in
             VStack(spacing: 12) {
@@ -231,7 +242,7 @@ struct CurrencyDetailsView: View {
                 .padding()
                 .background(Asset.Colors.latinCharm.swiftUIColor)
                 .cornerRadius(12)
-                
+
                 HStack {
                     Text("Launch Date")
                         .font(.system(size: 16, weight: .semibold))
@@ -239,9 +250,20 @@ struct CurrencyDetailsView: View {
 
                     Spacer()
 
-                    Text(viewStore.currency.launchDate, format: .dateTime.day().month().year())
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+                    if #available(iOS 15.0, *) {
+                        Text(viewStore.currency.launchDate, format: .dateTime.day().month().year())
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+                    } else {
+                        let dateFormatter: DateFormatter = {
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "MMMM d, yyyy"
+                            return dateFormatter
+                        }()
+                        Text(dateFormatter.string(from: viewStore.currency.launchDate))
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+                    }
                 }
                 .padding()
                 .background(Asset.Colors.latinCharm.swiftUIColor)
