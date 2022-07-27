@@ -36,7 +36,7 @@ struct MarketCell: View {
                     .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
                 Spacer()
 
-                Text(currency.percentageString + "%")
+                Text(currency.percentageString)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(
                         currency.percentage > 0

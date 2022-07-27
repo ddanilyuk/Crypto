@@ -44,12 +44,8 @@ struct MainView: View {
             .onAppear {
                 let tabBarAppearance = UITabBarAppearance()
                 tabBarAppearance.backgroundColor = Asset.Colors.latinCharm.color
-//                tabBarAppearance.isTranslucent = false
-
                 UITabBar.appearance().standardAppearance = tabBarAppearance
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-//                UITabBar.appearance().isTranslucent = false
-//                UITabBar.appearance().barTintColor = UIColor.red
             }
         }
     }

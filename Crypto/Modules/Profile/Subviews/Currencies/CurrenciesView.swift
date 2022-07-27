@@ -41,7 +41,6 @@ struct CurrenciesView: View {
     private var collection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
-                // TODO: ForEachStore?
                 ForEach(viewStore.currencies) { currency in
                     CurrencyCell(currency: currency, isRedacted: viewStore.isRedacted)
                         .onTapGesture {

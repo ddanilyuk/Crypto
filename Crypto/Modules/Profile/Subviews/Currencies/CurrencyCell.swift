@@ -53,7 +53,7 @@ struct CurrencyCell: View {
                 .frame(width: 164, height: 37)
         } else {
             ChartView(
-                data: currency.data,
+                data: currency.chartData,
                 percentage: currency.percentage,
                 frame: CGRect(x: 0, y: 0, width: 164, height: 37)
             )
@@ -74,7 +74,7 @@ struct CurrencyCell: View {
                 Asset.Images.Common.drop.swiftUI
             }
 
-            Text(currency.percentageString + "%")
+            Text(currency.percentageString)
                 .font(.system(size: 10, weight: .medium))
         }
         .foregroundColor(currency.percentage > 0 ? Asset.Colors.greenMana.swiftUIColor : Asset.Colors.red.swiftUIColor )

@@ -22,7 +22,7 @@ struct CurrencyDetailsView: View {
     let store: Store<CurrencyDetails.State, CurrencyDetails.Action>
 
     @Environment(\.presentationMode) private var presentationMode
-    @State private var isShowMore: Bool = false
+//    @State private var isShowMore: Bool = false
 
     private enum Field: Int, CaseIterable {
         case leftPair
@@ -120,27 +120,37 @@ struct CurrencyDetailsView: View {
                         Text("24h Low")
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+
                         Text(viewStore.currency.min24.priceString)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(Asset.Colors.white.swiftUIColor)
                     }
+
                     Spacer()
+
                     VStack(spacing: 7) {
                         Text("24h High")
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+
                         Text(viewStore.currency.max24.priceString)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(Asset.Colors.white.swiftUIColor)
+
                     }
+
                     Spacer()
+
                     VStack(spacing: 7) {
+
                         Text("Volume (BTC)")
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+
                         Text(String(viewStore.currency.volume))
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(Asset.Colors.white.swiftUIColor)
+
                     }
                 }
                 .padding(.top, 25)
@@ -162,15 +172,16 @@ struct CurrencyDetailsView: View {
                     Text("💸 About")
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(Asset.Colors.white.swiftUIColor)
+
                     Spacer()
                 }
                 Text(viewStore.currency.about)
-                    .lineLimit(isShowMore ? .max : 6)
+                    .lineLimit(viewStore.showMore ? .max : 6)
                     .font(.system(size: 14, weight: .regular))
-                    .if(isShowMore) { view in
+                    .if(viewStore.showMore) { view in
                         view.foregroundColor(Asset.Colors.white.swiftUIColor)
                     }
-                    .if(!isShowMore) { view in
+                    .if(!viewStore.showMore) { view in
                         view.linearGradientForeground(
                             colors: [
                                 Color.white,
@@ -180,11 +191,9 @@ struct CurrencyDetailsView: View {
                             endPoint: .bottom
                         )
                     }
-                if !isShowMore {
+                if !viewStore.showMore {
                     Button(
-                        action: {
-                            isShowMore = true
-                        },
+                        action: { viewStore.send(.binding(.set(\.$showMore, true))) },
                         label: {
                             Text("Show more +")
                                 .font(.system(size: 16, weight: .semibold))
@@ -222,7 +231,9 @@ struct CurrencyDetailsView: View {
                     Text("Rank")
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(Asset.Colors.white.swiftUIColor)
+
                     Spacer()
+
                     Text("№ \(viewStore.currency.rank)")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)

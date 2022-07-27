@@ -13,15 +13,16 @@ struct ProfileHeaderButton: View {
     let action: () -> Void
 
     var body: some View {
-        Button {
-            action()
-        } label: {
-            Text(title)
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(Asset.Colors.white.swiftUIColor)
-                .frame(maxWidth: .infinity)
-                .frame(height: 48)
-        }
+        Button(
+            action: { action() },
+            label: {
+                Text(title)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(Asset.Colors.white.swiftUIColor)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 48)
+            }
+        )
         .background(Asset.Colors.latinCharm.swiftUIColor)
         .cornerRadius(12)
         .overlay(

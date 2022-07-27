@@ -20,7 +20,7 @@ struct CurrencyTextField: View {
                     .foregroundColor(Asset.Colors.white.swiftUIColor)
                     .textFieldStyle(PlainTextFieldStyle())
                     .placeholder(when: text.isEmpty) {
-                        Text("0")
+                        Text("0.0")
                             .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
                     }

@@ -69,6 +69,7 @@
 		5FC9FB40289085EE000BA441 /* View+if.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FB3F289085EE000BA441 /* View+if.swift */; };
 		5FC9FB42289091C3000BA441 /* View+navigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FB41289091C3000BA441 /* View+navigationLink.swift */; };
 		5FC9FB4428912A1C000BA441 /* View+stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FB4328912A1C000BA441 /* View+stroke.swift */; };
+		5FC9FB4728913222000BA441 /* Double+price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FB4628913222000BA441 /* Double+price.swift */; };
 		E53F1E8D3BD382B147955B22 /* Pods_CryptoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D69B95EF89741747B25EB04 /* Pods_CryptoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +156,7 @@
 		5FC9FB3F289085EE000BA441 /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
 		5FC9FB41289091C3000BA441 /* View+navigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+navigationLink.swift"; sourceTree = "<group>"; };
 		5FC9FB4328912A1C000BA441 /* View+stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+stroke.swift"; sourceTree = "<group>"; };
+		5FC9FB4628913222000BA441 /* Double+price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+price.swift"; sourceTree = "<group>"; };
 		6E209F6BD5D8879E87AA952A /* Pods_Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D69B95EF89741747B25EB04 /* Pods_CryptoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FC31590C450E6AFB609C8A /* Pods-CryptoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoTests/Pods-CryptoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -323,16 +325,10 @@
 		5F71269B28836468008CA35E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5F71269C2883647E008CA35E /* Publisher+Ext.swift */,
+				5FC9FB482891322D000BA441 /* Combine */,
+				5FC9FB4528913216000BA441 /* Foundation */,
+				5FC9FB4928913233000BA441 /* SwiftUI */,
 				5F7126CE28836CC5008CA35E /* SwiftGen+Ext.swift */,
-				5F7126D028837346008CA35E /* Collection+Safe.swift */,
-				5F7126D928841168008CA35E /* View+safeAreaInsets.swift */,
-				5F7126E72884197B008CA35E /* View+gradients.swift */,
-				5FC9FB39289083E0000BA441 /* View+placeholder.swift */,
-				5FC9FB3D28908571000BA441 /* View+CornerRadius.swift */,
-				5FC9FB3F289085EE000BA441 /* View+if.swift */,
-				5FC9FB41289091C3000BA441 /* View+navigationLink.swift */,
-				5FC9FB4328912A1C000BA441 /* View+stroke.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -546,6 +542,37 @@
 				5FC9FB3B28908447000BA441 /* CurrencyMultiLineButton.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		5FC9FB4528913216000BA441 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126D028837346008CA35E /* Collection+Safe.swift */,
+				5FC9FB4628913222000BA441 /* Double+price.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		5FC9FB482891322D000BA441 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				5F71269C2883647E008CA35E /* Publisher+Ext.swift */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
+		5FC9FB4928913233000BA441 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126D928841168008CA35E /* View+safeAreaInsets.swift */,
+				5F7126E72884197B008CA35E /* View+gradients.swift */,
+				5FC9FB39289083E0000BA441 /* View+placeholder.swift */,
+				5FC9FB3D28908571000BA441 /* View+CornerRadius.swift */,
+				5FC9FB3F289085EE000BA441 /* View+if.swift */,
+				5FC9FB41289091C3000BA441 /* View+navigationLink.swift */,
+				5FC9FB4328912A1C000BA441 /* View+stroke.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -822,6 +849,7 @@
 				5F9FB81C2890770F006E4C22 /* CurrencyService.swift in Sources */,
 				5F7126E32884191A008CA35E /* CurrencyCell.swift in Sources */,
 				5F71266B28836216008CA35E /* CryptoApp.swift in Sources */,
+				5FC9FB4728913222000BA441 /* Double+price.swift in Sources */,
 				5F9FB80028907261006E4C22 /* ChartView.swift in Sources */,
 				5F7126D828838059008CA35E /* NewsView.swift in Sources */,
 				5F7126B228836515008CA35E /* OnboardingStore.swift in Sources */,

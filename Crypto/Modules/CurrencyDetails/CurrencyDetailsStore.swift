@@ -14,6 +14,7 @@ struct CurrencyDetails {
     struct State: Equatable {
         let currency: Currency
 
+        @BindableState var showMore: Bool = false
         var pairLeftString: String = "0.0"
         var pairRightString: String = "0.0"
 

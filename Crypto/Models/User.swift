@@ -29,7 +29,7 @@ extension User: Decodable {
 
 }
 
-// MARK: - Mock
+// MARK: - Redacted
 
 extension User {
 

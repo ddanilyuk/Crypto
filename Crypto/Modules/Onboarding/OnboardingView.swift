@@ -49,41 +49,49 @@ struct OnboardingView: View {
                 Rectangle()
                     .fill(Asset.Colors.latinCharm.swiftUIColor)
                     .cornerRadius(30)
+
                 VStack {
                     Spacer()
+
                     Text(viewStore.selectedStep.title)
                         .font(.system(size: 32, weight: .semibold))
                         .foregroundColor(Asset.Colors.white.swiftUIColor)
+
                     Spacer()
+
                     Text(viewStore.selectedStep.description)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
                         .multilineTextAlignment(.center)
+
                     Spacer()
-                    Button {
-                        viewStore.send(.nextStep)
-                    } label: {
-                        Text("Continue")
-                            .frame(height: 56)
-                            .frame(maxWidth: .infinity)
-                            .background(
-                                LinearGradient(
-                                    gradient: Gradient(
-                                        colors: [
-                                            Asset.Colors.strawberryDreams.swiftUIColor,
-                                            Asset.Colors.watermelonJuice.swiftUIColor
-                                        ]
-                                    ),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
+
+                    Button(
+                        action: { viewStore.send(.nextStep) },
+                        label: {
+                            Text("Continue")
+                                .frame(height: 56)
+                                .frame(maxWidth: .infinity)
+                                .background(
+                                    LinearGradient(
+                                        gradient: Gradient(
+                                            colors: [
+                                                Asset.Colors.strawberryDreams.swiftUIColor,
+                                                Asset.Colors.watermelonJuice.swiftUIColor
+                                            ]
+                                        ),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
                                 )
-                            )
-                            .cornerRadius(56 / 2)
-                            .padding(.leading, 20)
-                            .padding(.trailing, 20)
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Asset.Colors.white.swiftUIColor)
-                    }
+                                .cornerRadius(56 / 2)
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(Asset.Colors.white.swiftUIColor)
+                        }
+                    )
+
                     Spacer()
                 }
                 .padding()
