@@ -182,7 +182,7 @@ struct CurrencyDetailsView: View {
                         view.foregroundColor(Asset.Colors.white.swiftUIColor)
                     }
                     .if(!viewStore.showMore) { view in
-                        view.linearGradientForeground(
+                        view.overlayLinearGradient(
                             colors: [
                                 Color.white,
                                 Color.black.opacity(0.9)
@@ -197,7 +197,7 @@ struct CurrencyDetailsView: View {
                         label: {
                             Text("Show more +")
                                 .font(.system(size: 16, weight: .semibold))
-                                .linearGradientForeground(
+                                .overlayLinearGradient(
                                     colors: [
                                         Asset.Colors.strawberryDreams.swiftUIColor,
                                         Asset.Colors.watermelonJuice.swiftUIColor
@@ -214,7 +214,7 @@ struct CurrencyDetailsView: View {
 
     var grad: some View {
         EmptyView()
-            .linearGradientForeground(
+            .overlayLinearGradient(
                 colors: [
                     Asset.Colors.white.swiftUIColor,
                     Asset.Colors.white.swiftUIColor.opacity(0.01)

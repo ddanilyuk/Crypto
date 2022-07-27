@@ -28,7 +28,7 @@ struct CurrencyTextField: View {
 
             Rectangle()
                 .frame(height: 1)
-                .linearGradientForeground(
+                .overlayLinearGradient(
                     colors: [
                         Asset.Colors.strawberryDreams.swiftUIColor,
                         Asset.Colors.watermelonJuice.swiftUIColor

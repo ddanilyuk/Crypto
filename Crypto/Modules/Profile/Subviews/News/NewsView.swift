@@ -41,7 +41,7 @@ struct NewsView: View {
                 label: {
                     Text("Show all")
                         .font(.system(size: 16, weight: .semibold))
-                        .linearGradientForeground(
+                        .overlayLinearGradient(
                             colors: [
                                 Asset.Colors.strawberryDreams.swiftUIColor,
                                 Asset.Colors.watermelonJuice.swiftUIColor

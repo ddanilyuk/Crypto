@@ -76,7 +76,7 @@ struct ProfileHeaderView: View {
                 .fill(Asset.Colors.latinCharm.swiftUIColor)
                 .opacity(0.5)
                 .frame(width: 180, height: 180)
-                .radianGradientForeground(
+                .overlayRadianGradient(
                     colors: [Asset.Colors.strawberryDreams.swiftUIColor, .clear],
                     center: .center,
                     startRadius: 0,

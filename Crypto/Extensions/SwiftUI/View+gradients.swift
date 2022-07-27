@@ -9,8 +9,7 @@ import SwiftUI
 
 extension View {
 
-    // TODO: Refactor?
-    func linearGradientForeground(
+    func overlayLinearGradient(
         colors: [Color],
         startPoint: UnitPoint,
         endPoint: UnitPoint
@@ -25,7 +24,7 @@ extension View {
         .mask(self)
     }
     
-    func radianGradientForeground(
+    func overlayRadianGradient(
         colors: [Color],
         center: UnitPoint,
         startRadius: CGFloat,
