@@ -11,22 +11,24 @@ struct CurrencyMultiLineButton: View {
 
     let title: String
     let subtitle: String
+    let action: () -> Void
 
     var body: some View {
-        Button {
-            print(title)
-        } label: {
-            VStack(spacing: 10) {
-                Text(title)
-                    .font(.system(size: 16, weight: .semibold))
-                Text(subtitle)
-                    .font(.system(size: 12, weight: .regular))
+        Button(
+            action: { action() },
+            label: {
+                VStack(spacing: 10) {
+                    Text(title)
+                        .font(.system(size: 16, weight: .semibold))
 
+                    Text(subtitle)
+                        .font(.system(size: 12, weight: .regular))
+                }
+                .foregroundColor(Asset.Colors.white.swiftUIColor)
+                .frame(maxWidth: .infinity)
+                .frame(height: 70)
             }
-            .foregroundColor(Asset.Colors.white.swiftUIColor)
-            .frame(maxWidth: .infinity)
-            .frame(height: 70)
-        }
+        )
         .background(Asset.Colors.latinCharm.swiftUIColor)
         .cornerRadius(12)
         .overlay(
@@ -38,9 +40,11 @@ struct CurrencyMultiLineButton: View {
                             Asset.Colors.strawberryDreams.swiftUIColor
                         ],
                         startPoint: .trailing,
-                        endPoint: .leading),
+                        endPoint: .leading
+                    ),
                     lineWidth: 1
                 )
+                .padding(1)
         )
     }
 }

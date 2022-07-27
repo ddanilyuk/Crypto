@@ -10,6 +10,7 @@ import SwiftUI
 struct CurrencyTextField: View {
 
     @Binding var text: String
+    let name: String
 
     var body: some View {
         VStack {
@@ -37,7 +38,7 @@ struct CurrencyTextField: View {
                 )
 
             HStack {
-                Text("Available: N")
+                Text("Available: N \(name)")
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
                 Spacer()

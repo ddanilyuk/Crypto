@@ -14,16 +14,16 @@ struct CurrencyDetails {
     struct State: Equatable {
         let currency: Currency
 
-//        @BindableState var pairLeft: String = ""
-//        @BindableState var pairRight: String = ""
+        var pairLeftString: String = "0.0"
+        var pairRightString: String = "0.0"
 
-        var pairLeftSide: Double = 0
-        var pairRightSide: Double = 0
+        var pairLeftSide: Double {
+            Double(pairLeftString) ?? 0
+        }
 
-
-//        var buyPrice: Double {
-//            currency.price * (Double(pairLeft) ?? 0)
-//        }
+        var pairRightSide: Double {
+            Double(pairRightString) ?? 0
+        }
     }
 
     // MARK: - Action
@@ -33,6 +33,9 @@ struct CurrencyDetails {
 
         case setPairLeftSide(String)
         case setPairRightSide(String)
+
+        case buyButtonTapped
+        case sellButtonTapped
         
         case binding(BindingAction<State>)
     }
@@ -49,23 +52,28 @@ struct CurrencyDetails {
             return .none
 
         case let .setPairLeftSide(string):
-            print(string.trimmingCharacters(in: .punctuationCharacters))
-            state.pairLeftSide = Double(string.trimmingCharacters(in: .punctuationCharacters)) ?? 0
-            state.pairRightSide = state.pairLeftSide * state.currency.price
+            guard state.pairLeftString != string else {
+                return .none
+            }
+            state.pairLeftString = string
+            state.pairRightString = String(format: "%.02f", state.pairLeftSide * state.currency.price)
             return .none
 
         case let .setPairRightSide(string):
-            state.pairRightSide = Double(string.trimmingCharacters(in: .punctuationCharacters)) ?? 0
-            state.pairLeftSide = state.pairRightSide / state.currency.price
+            guard state.pairRightString != string else {
+                return .none
+            }
+            state.pairRightString = string
+            state.pairLeftString = String(format: "%.02f", state.pairRightSide / state.currency.price)
             return .none
 
-//        case .binding(\.$pairLeft):
-//            state.pairRight = String((Double(state.pairLeft) ?? 0) * state.currency.price)
-//            return .none
-//
-//        case .binding(\.$pairRight):
-//            state.pairLeft = String(state.buyPrice)
-//            return .none
+        case .buyButtonTapped:
+            print("Buy \(state.pairLeftSide) \(state.currency.symbol) for \(state.pairRightSide) USD")
+            return .none
+
+        case .sellButtonTapped:
+            print("Sell \(state.pairLeftSide) \(state.currency.symbol) for \(state.pairRightSide) USD")
+            return .none
 
         case .binding:
             return .none

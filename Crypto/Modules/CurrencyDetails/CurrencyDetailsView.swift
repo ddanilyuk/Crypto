@@ -24,37 +24,48 @@ struct CurrencyDetailsView: View {
     @Environment(\.presentationMode) private var presentationMode
     @State private var isShowMore: Bool = false
 
+    private enum Field: Int, CaseIterable {
+        case leftPair
+        case rightPair
+    }
+    @FocusState private var focusedField: Field?
+
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(spacing: 0) {
                 header
                 ScrollView(showsIndicators: false) {
-                    CurrencyTextField(text: viewStore.binding(
-                        get: { String($0.pairLeftSide) },
-//                        get: { String(format: "%.02f", $0.pairLeftSide) },
-                        send: { .setPairLeftSide($0) } )
+                    CurrencyTextField(
+                        text: viewStore.binding(
+                            get: { $0.pairLeftString },
+                            send: { .setPairLeftSide($0) }
+                        ),
+                        name: viewStore.currency.symbol
                     )
+                        .focused($focusedField, equals: .leftPair)
                         .padding()
                         .keyboardType(.decimalPad)
 
-//                    String(format: "%.02f", $0.pairRightSide)
-
-                    CurrencyTextField(text: viewStore.binding(
-                        get: { String($0.pairRightSide) },
-//                        get: { String(format: "%.02f", $0.pairRightSide) },
-                        send: { .setPairRightSide($0) } )
+                    CurrencyTextField(
+                        text: viewStore.binding(
+                            get: { $0.pairRightString },
+                            send: { .setPairRightSide($0) } ),
+                        name: "USD"
                     )
+                        .focused($focusedField, equals: .rightPair)
                         .padding()
                         .keyboardType(.decimalPad)
 
                     HStack(spacing: 10) {
                         CurrencyMultiLineButton(
                             title: "Buy \(viewStore.currency.symbol)",
-                            subtitle: "\(viewStore.pairRightSide) USD ≈ \(viewStore.pairLeftSide) \(viewStore.currency.symbol)"
+                            subtitle: "\(viewStore.pairRightSide) USD ≈ \(viewStore.pairLeftSide) \(viewStore.currency.symbol)",
+                            action: { viewStore.send(.buyButtonTapped) }
                         )
                         CurrencyMultiLineButton(
                             title: "Sell \(viewStore.currency.symbol)",
-                            subtitle: "\(viewStore.pairLeftSide) \(viewStore.currency.symbol) ≈ \(viewStore.pairRightSide) USD"
+                            subtitle: "\(viewStore.pairLeftSide) \(viewStore.currency.symbol) ≈ \(viewStore.pairRightSide) USD",
+                            action: { viewStore.send(.sellButtonTapped) }
                         )
                     }
                     .padding()
@@ -64,6 +75,14 @@ struct CurrencyDetailsView: View {
 
                     footer
                         .padding()
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        Spacer()
+                        Button("Done") { focusedField = nil }
+                    }
                 }
             }
             .background(Asset.Colors.corbeau.swiftUIColor.ignoresSafeArea())
