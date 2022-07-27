@@ -173,8 +173,8 @@ struct CurrencyDetailsView: View {
                     .if(!isShowMore) { view in
                         view.linearGradientForeground(
                             colors: [
-                                Asset.Colors.white.swiftUIColor,
-                                Asset.Colors.white.swiftUIColor.opacity(0.01)
+                                Color.white,
+                                Color.black.opacity(0.9)
                             ],
                             startPoint: .top,
                             endPoint: .bottom
@@ -186,7 +186,7 @@ struct CurrencyDetailsView: View {
                             isShowMore = true
                         },
                         label: {
-                            Text("Show more")
+                            Text("Show more +")
                                 .font(.system(size: 16, weight: .semibold))
                                 .linearGradientForeground(
                                     colors: [

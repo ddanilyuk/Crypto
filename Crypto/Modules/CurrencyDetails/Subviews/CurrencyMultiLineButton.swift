@@ -29,12 +29,12 @@ struct CurrencyMultiLineButton: View {
                 .frame(height: 70)
             }
         )
-        .background(Asset.Colors.latinCharm.swiftUIColor)
         .cornerRadius(12)
-        .overlay(
+        .background(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(
-                    LinearGradient(
+                .fill(
+                    Asset.Colors.latinCharm.swiftUIColor,
+                    strokeBorder: LinearGradient(
                         colors: [
                             Asset.Colors.watermelonJuice.swiftUIColor,
                             Asset.Colors.strawberryDreams.swiftUIColor
@@ -44,7 +44,6 @@ struct CurrencyMultiLineButton: View {
                     ),
                     lineWidth: 1
                 )
-                .padding(1)
         )
     }
 }
