@@ -18,6 +18,8 @@ struct CurrencyDetailsView: View {
         case leftPair
         case rightPair
     }
+
+    @available(iOS 15.0, *)
     @FocusState private var focusedField: Field?
 
     var body: some View {
@@ -32,9 +34,16 @@ struct CurrencyDetailsView: View {
                         ),
                         name: viewStore.currency.symbol
                     )
-                        .focused($focusedField, equals: .leftPair)
-                        .padding()
-                        .keyboardType(.decimalPad)
+                    .modify { view in
+                        if #available(iOS 15.0, *) {
+                            view
+                                .focused($focusedField, equals: .leftPair)
+                        } else {
+                            view
+                        }
+                    }
+                    .padding()
+                    .keyboardType(.decimalPad)
 
                     CurrencyTextField(
                         text: viewStore.binding(
@@ -43,9 +52,16 @@ struct CurrencyDetailsView: View {
                         ),
                         name: "USD"
                     )
-                        .focused($focusedField, equals: .rightPair)
-                        .padding()
-                        .keyboardType(.decimalPad)
+                    .modify { view in
+                        if #available(iOS 15.0, *) {
+                            view
+                                .focused($focusedField, equals: .leftPair)
+                        } else {
+                            view
+                        }
+                    }
+                    .padding()
+                    .keyboardType(.decimalPad)
 
                     HStack(spacing: 10) {
                         CurrencyMultiLineButton(
@@ -68,11 +84,19 @@ struct CurrencyDetailsView: View {
                         .padding()
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .keyboard) {
-                    HStack {
-                        Spacer()
-                        Button("Done") { focusedField = nil }
+            .modify { view in
+                if #available(iOS 15.0, *) {
+                    view.toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            HStack {
+                                Spacer()
+                                Button("Done") { focusedField = nil }
+                            }
+                        }
+                    }
+                } else {
+                    view.onTapGesture {
+                        UIApplication.shared.endEditing()
                     }
                 }
             }
@@ -239,9 +263,20 @@ struct CurrencyDetailsView: View {
 
                     Spacer()
 
-                    Text(viewStore.currency.launchDate, format: .dateTime.day().month().year())
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+                    if #available(iOS 15.0, *) {
+                        Text(viewStore.currency.launchDate, format: .dateTime.day().month().year())
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+                    } else {
+                        let dateFormatter: DateFormatter = {
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "MMMM d, yyyy"
+                            return dateFormatter
+                        }()
+                        Text(dateFormatter.string(from: viewStore.currency.launchDate))
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(Asset.Colors.heatherGrey.swiftUIColor)
+                    }
                 }
                 .padding()
                 .background(Asset.Colors.latinCharm.swiftUIColor)

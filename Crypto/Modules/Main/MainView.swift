@@ -45,7 +45,9 @@ struct MainView: View {
                 let tabBarAppearance = UITabBarAppearance()
                 tabBarAppearance.backgroundColor = Asset.Colors.latinCharm.color
                 UITabBar.appearance().standardAppearance = tabBarAppearance
-                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                if #available(iOS 15.0, *) {
+                    UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                }
             }
         }
     }
