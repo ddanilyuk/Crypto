@@ -85,8 +85,7 @@ struct OnboardingView: View {
                                     )
                                 )
                                 .cornerRadius(56 / 2)
-                                .padding(.leading, 20)
-                                .padding(.trailing, 20)
+                                .padding(.horizontal, 20)
                                 .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(Asset.Colors.white.swiftUIColor)
                         }

@@ -8,21 +8,11 @@
 import SwiftUI
 import ComposableArchitecture
 
-
-extension Double {
-    /// Rounds the double to decimal places value
-    func rounded(toPlaces places:Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-    }
-}
-
 struct CurrencyDetailsView: View {
 
     let store: Store<CurrencyDetails.State, CurrencyDetails.Action>
 
     @Environment(\.presentationMode) private var presentationMode
-//    @State private var isShowMore: Bool = false
 
     private enum Field: Int, CaseIterable {
         case leftPair
@@ -49,7 +39,8 @@ struct CurrencyDetailsView: View {
                     CurrencyTextField(
                         text: viewStore.binding(
                             get: { $0.pairRightString },
-                            send: { .setPairRightSide($0) } ),
+                            send: { .setPairRightSide($0) }
+                        ),
                         name: "USD"
                     )
                         .focused($focusedField, equals: .rightPair)
@@ -155,8 +146,7 @@ struct CurrencyDetailsView: View {
                 }
                 .padding(.top, 25)
                 .padding(.bottom, 38)
-                .padding(.trailing, 20)
-                .padding(.leading, 20)
+                .padding(.horizontal, 20)
             }
             .padding(.top, 25)
             .frame(maxWidth: .infinity)

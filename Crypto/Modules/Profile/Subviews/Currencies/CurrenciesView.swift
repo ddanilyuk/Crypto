@@ -48,8 +48,7 @@ struct CurrenciesView: View {
                         }
                 }
             }
-            .padding(.leading, 20)
-            .padding(.trailing, 20)
+            .padding(.horizontal, 20)
         }
     }
     

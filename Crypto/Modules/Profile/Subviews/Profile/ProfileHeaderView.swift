@@ -102,8 +102,7 @@ struct ProfileHeaderView: View {
             )
         }
         .padding(.top, 32)
-        .padding(.trailing, 20)
-        .padding(.leading, 20)
+        .padding(.horizontal, 20)
         .padding(.bottom, 47)
     }
 

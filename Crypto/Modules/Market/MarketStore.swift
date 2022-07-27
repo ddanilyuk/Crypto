@@ -13,8 +13,8 @@ struct Market {
 
     struct State: Equatable {
         var currencies: [Currency]
-        var isAlreadyAppeared: Bool = false
-        @BindableState var isLoading: Bool = true
+        var isAlreadyAppeared = false
+        @BindableState var isLoading = true
         @BindableState var selectedCurrencyDetails: CurrencyDetails.State?
 
         init() {

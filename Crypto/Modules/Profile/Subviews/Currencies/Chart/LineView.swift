@@ -12,7 +12,7 @@ struct LineView: View {
     let linePath: Path
     let lineShape: Color
 
-    @State private var showAnimation: Bool = false
+    @State private var showAnimation = false
 
     var body: some View {
         linePathView

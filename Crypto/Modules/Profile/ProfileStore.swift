@@ -16,10 +16,10 @@ struct Profile {
         var trendingCurrencies: [Currency]
         var news: [Article]
 
-        var isAlreadyAppeared: Bool = false
-        @BindableState var userIsLoading: Bool = true
-        @BindableState var trendingCurrenciesIsLoading: Bool = true
-        @BindableState var newsIsLoading: Bool = true
+        var isAlreadyAppeared = false
+        @BindableState var userIsLoading = true
+        @BindableState var trendingCurrenciesIsLoading = true
+        @BindableState var newsIsLoading = true
 
         init() {
             user = User.redacted
